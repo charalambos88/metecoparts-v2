@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/font/demo-files/demo.css';
+@import 'assets/css/bootstrap.min.css';
+@import 'assets/css/fontello.css';
+@import 'assets/css/owl.carousel.css';
+@import 'assets/css/style.css';
+@import 'assets/css/responsive.css';
+@import 'assets/css/custom.css';
