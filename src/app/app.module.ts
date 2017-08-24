@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { routes } from './app.router';
 
 import { AppComponent } from './app.component';
@@ -17,27 +18,37 @@ import { SidebarComponent } from './component/cars/show/sidebar/sidebar.componen
 import { FiltersComponent } from './component/cars/index/filters/filters.component';
 import { TermsComponent } from './component/pages/terms/terms.component';
 
+import { CarService } from './services/car.service';
+import { MakeService } from './services/make.service';
+import { MessageService } from './services/message.service';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    AboutComponent,
-    ContactComponent,
-    FaqsComponent,
-    IndexComponent,
-    CarsIndexComponent,
-    Notfound404Component,
-    CarsShowComponent,
-    SidebarComponent,
-    FiltersComponent,
-    TermsComponent
+  AppComponent,
+  HeaderComponent,
+  FooterComponent,
+  AboutComponent,
+  ContactComponent,
+  FaqsComponent,
+  IndexComponent,
+  CarsIndexComponent,
+  Notfound404Component,
+  CarsShowComponent,
+  SidebarComponent,
+  FiltersComponent,
+  TermsComponent
   ],
   imports: [
-    BrowserModule,
-    routes
+  BrowserModule,
+  FormsModule,
+  HttpModule,
+  routes
   ],
-  providers: [],
+  providers: [
+  CarService,
+  MakeService,
+  MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
