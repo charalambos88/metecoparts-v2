@@ -7,12 +7,12 @@
 			</aside>
 			<main id="main" class="col-md-9 col-sm-12">            
 				<div class="dealers-section product-type">
-					<h1 class="section-title tt-uppercase">Μεταχειρισμένα ανταλλακτικά για <span class="fw-medium">Opel Corsa B, 1992-1998</span></h1>             
+					<h1 class="section-title tt-uppercase">Μεταχειρισμένα ανταλλακτικά για <span class="fw-medium">Opel Corsa B, 1992-1998</span></h1>            
 					<!-- dealer sorting -->							
 					<div class="flex-row flex-justify">								
 						<div class="sort-dealer">									
 							<div class="sort-col">										
-								<div class="flex-row flex-center">											
+								<div class="flex-row flex-center">
 									<span>Ταξινόμηση κατά</span>
 									<div class="custom-select">
 										<div class="select-title"> Ημ/μνία ανάρτησης</div>
@@ -26,7 +26,7 @@
 								</div>										
 							</div>
 							<div class="sort-col">										
-								<div class="flex-row flex-center">											
+								<div class="flex-row flex-center">
 									<span>Per page</span>
 									<div class="custom-select">
 										<div class="select-title">12</div>
@@ -40,87 +40,114 @@
 								</div>										
 							</div>									
 						</div>								
-						<div class="settings-view-products">									
-							<div class="sort-criteria">										
-								<div class="view-type">											
-									<a href="#" title="grid View" [attr.data-view]="'grid'" [attr.data-target]="'#product-holder'"><i class="licon-icons"></i></a>										
-									<a href="#" title="list View" data-view="list" data-target="#product-holder" class="active"><i class="licon-menu2"></i></a>											
-								</div>										
-							</div><!--/ .sort-criteria -->
-
-						</div>
-
-					</div>
-
+						<div class="settings-view-products">
+							<div class="sort-criteria">	
+								<div class="view-type">	
+									<a title="grid View" 
+									style="cursor: pointer;"
+									[class.active]="!activeList" 
+									(click)="onclickGrid()"
+									>
+									<i class="licon-icons"></i>
+								</a>	
+								<a title="list View" 
+								style="cursor: pointer;"
+								[class.active]="activeList"
+								(click)="onclickList()">
+								<i class="licon-menu2"></i>
+							</a>
+						</div>										
+					</div><!--/ .sort-criteria -->
 				</div>
-
-				<div id="product-holder" class="products-holder view-list">
-					<div class="row flex-row">
-						<div class="col-sm-4 col-xs-6"  *ngFor="let car of cars">
-							<div class="product">
-								<figure class="product-image">
-									<a href="#"><img [src]="car.images[0].path_view" alt=""></a>
-									<div class="overlay full-width-block">
-										<div class="icon-fancy">
-											<a href="https://s3.amazonaws.com/antalaktika.aposirsi.gr/./assets/images/uploaded_files/000/028/710/view/DSCN3794.jpg" class="fancybox" data-fancybox="group"><i class="licon-camera2"></i><span>7</span></a>
-											<a href="#"><i class="licon-camera"></i><span>1</span></a>
-										</div>
-										<div>
-											<a href="#"><i class="licon-heart"></i></a>
-											<a href="#"><i class="licon-copy"></i></a>
-										</div>
-									</div>
-								</figure>
-								<div class="product-description">
-									<div class="row">
-										<div class="col-xs-8">                          
-											<h2 class="product-name">
-												<a href="#">
-													{{ car.make }} {{ car.model }}, {{ car.year }}, {{ car.cubism }} <span class="contact-title">cc</span>
-												</a>
-											</h2>
-											<p>{{ car.version }}<br>{{ car.engine_bundle }}</p>
-											<div class="pricing-area">
-												<div class="mpg"><span>Αμάξωμα</span>{{ car.trim }}</div>
-												<div class="mpg"><span>Χρονολογία </span>{{ car.year }}</div>
-												<div class="mpg"><span>Χρώμα</span>{{ car.car_color }}</div>
-												<div class="mpg"><span>Κινητήρας</span>{{ car.engine_number }}</div>						  
-												<div class="mpg"><span>Κυβισμός</span>{{ car.cubism }}</div>
-												<div class="mpg"><span>Καύσιμο</span>{{ car.fuel }}</div>
-												<div class="mpg"><span>Σασμάν</span>Χειροκίνητο </div>
+			</div>
+		</div>
+		<div id="product-holder" class="products-holder" 
+		[ngClass]="{'view-list':isList, 'view-grid':!isList}">
+		<div class="row flex-row">
+			<div class="col-sm-4 col-xs-6" *ngFor="let car of cars">
+				<div class="product">
+					<figure class="product-image">
+						<a href="#"><img [src]="car.images[0].path_view" alt=""></a>
+						<div class="overlay full-width-block">
+							<div class="icon-fancy">
+								<a href="https://s3.amazonaws.com/antalaktika.aposirsi.gr/./assets/images/uploaded_files/000/028/710/view/DSCN3794.jpg" class="fancybox" data-fancybox="group"><i class="licon-camera2"></i><span>7</span></a>
+								<a href="#"><i class="licon-camera"></i><span>1</span></a>
+							</div>
+							<div>
+								<a href="#"><i class="licon-heart"></i></a>
+								<a href="#"><i class="licon-copy"></i></a>
+							</div>
+						</div>
+					</figure>
+					<div class="product-description">
+						<div class="row">
+							<div class="col-xs-8">                          
+								<h2 class="product-name">
+									<a [routerLink]="[car.id]">
+										{{ car.make }} {{ car.model }}, {{ car.year }}, {{ car.cubism }} <span class="contact-title">cc</span>
+									</a>
+								</h2>
+								<p>{{ car.version }}<br>{{ car.engine_bundle }}</p>
+								<div class="content-element8">							
+									<ul class="car-detail-list">
+										<li class="flex-row flex-justify">
+											<div class="detail-col">
+												<span>Αμάξωμα</span><span>{{ car.trim }}</span>
+											</div>									
+										</li>
+										<li class="flex-row flex-justify">
+											<div class="detail-col">
+												<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
+											</div>									
+										</li>
+										<li class="flex-row flex-justify">
+											<div class="detail-col">
+												<span>Χρώμα</span><span>{{ car.car_color }}</span>
+											</div>									
+										</li>
+										<li class="flex-row flex-justify">
+											<div class="detail-col">
+												<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
+											</div>									
+										</li>
+										<li class="flex-row flex-justify">
+											<div class="detail-col">
+												<span>Καύσιμο</span><span>{{ car.fuel }}</span>
+											</div>									
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="dealer-item">
+									<div class="dealer-desc">
+										<div class="contact-section">
+											<div class="contact-item">
+												<span class="contact-title"><i class="licon-tags"></i># {{ car.id }}</span>
+											</div>
+											<div class="contact-item">
+												<span class="contact-title"><i class="licon-clock3"></i> {{car.created_at * 1000 | date: 'dd/MM/yyyy'}}</span>
 											</div>
 										</div>
-										<div class="col-xs-4">
-											<div class="dealer-item">
-												<div class="dealer-desc">
-													<div class="contact-section">
-														<div class="contact-item">
-															<span class="contact-title"><i class="licon-tags"></i># {{ car.id }}</span>
-														</div>
-														<div class="contact-item">
-															<span class="contact-title"><i class="licon-clock3"></i> {{car.created_at * 1000 | date: 'dd/MM/yyyy'}}</span>
-														</div>
-													</div>
-													<a href="#" class="btn btn-small">Προβολη</a>
-												</div>
-												<a href="#" class="link-text2">Similar cars at this dealership</a>
-											</div>
-										</div>
+										<a [routerLink]="[car.id]" class="btn btn-small">Προβολη</a>
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
 					</div>
 				</div>
-				<ul class="pagination">
-					<li><a href="#" class="prev-page"></a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#" class="next-page"></a></li>
-				</ul>
-			</main>
+			</div>	
 		</div>
 	</div>
+	<ul class="pagination">
+		<li><a href="#" class="prev-page"></a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#" class="next-page"></a></li>
+	</ul>
+</main>
+</div>
+</div>
 </div>
 			<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->

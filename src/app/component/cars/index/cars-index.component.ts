@@ -17,6 +17,7 @@ export class CarsIndexComponent implements OnInit {
 	make:string;
 	model: string;
 
+
 	private filters = new Map;
 
 	constructor(
@@ -57,6 +58,20 @@ export class CarsIndexComponent implements OnInit {
 			}
 		})
 		this.getCars(this.filters)
+	}
+
+	//dom manipulation
+	isList = true;
+	activeList = true;
+
+	onclickGrid(){
+		this.isList = !this.isList;
+		this.activeList = !this.activeList
+	}
+
+	onclickList(){
+		this.isList = !this.isList;
+		this.activeList = !this.activeList;
 	}
 
 }

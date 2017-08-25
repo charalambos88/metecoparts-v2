@@ -19,9 +19,9 @@ export const router: Routes = [
 	{ path: '', component:IndexComponent, pathMatch:'full'},
 	{ path: 'about', component:AboutComponent},
 	{ path: 'contact', component:ContactComponent},
-	{ path: 'listing', component:CarsIndexComponent},
-	{ path: 'car', component:CarsShowComponent},
-	{ path: 'faq', component:FaqsComponent},
+	{ path: 'metaxireismena-antallaktika', component:CarsIndexComponent},
+	{ path: 'metaxireismena-antallaktika/:id', component:CarsShowComponent},
+	{ path: 'syxnes-erotiseis', component:FaqsComponent},
 	{ path: 'terms', component:TermsComponent},
 	{ path: '**', component: Notfound404Component}
 

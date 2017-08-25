@@ -1,3 +1,337 @@
-<p>
-  show works!
-</p>
+		<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->		
+		<div id="content">
+			<div class="page-section3">				
+				<div class="container" *ngIf="car">
+					<div class="share-section flex-row flex-justify flex-center"></div>
+					<div class="row">						
+						<main id="main" class="col-md-8">							
+							<div class="single-product-section">
+								<div class="single-product-title">
+									<h1 class="section-title tt-uppercase fw-medium">Ανταλλακτικά για <span class="fw-medium">{{car.make}} {{car.model}}, {{car.year}}</span> <span class="text-size-medium">(ΚΩΔ. {{ car.id }})</span></h1>
+									<div class="flex-row flex-justify">									
+										<div class="slash-list">
+											<a href="#" class="link-text2"><i class="licon-engine"></i>{{ car.cubism }} <span class="contact-title">cc</span></a>
+											<a href="#" class="link-text2"><i class="licon-car"></i>{{ car.trim }}</a>
+											<a href="#" class="link-text2"><i class="licon-gas"></i>{{ car.fuel }}</a>
+											<a href="#" class="link-text2"><i class="licon-transmission"></i>Χειροκίνητο (?)</a>
+											<a href="#" class="link-text2"><i class="icon-print-6"></i></a>
+										</div>
+									</div>									
+								</div>
+								
+								<div class="content-element3">									
+									<div class="carousel-type-4 type-2">
+										<div class="carousel-tabs" style="height: 430px;">			
+
+											<div id="tab1" class="tab-cont current">
+
+												<div class="owl-carousel owl-theme owl-responsive-1400 owl-loaded" id="sync-carousel-1" data-max-items="1" *ngFor="let image of car.images">																		
+													<div class="item-carousel">
+														<a class="fancybox" data-fancybox="group">
+															<img [src]="image.path_view" alt="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}">
+														</a>
+													</div>		
+
+												</div>	
+
+
+
+											</div>
+
+											<div id="tab2" class="tab-cont">
+												<div id="googleMap3" class="map-container"></div>	
+											</div>											
+										</div>										
+										<div class="tabs tabs-section style-2 clearfix">
+											<!--tabs navigation-->                  
+											<ul class="tabs-nav clearfix">
+												<li data-tab="tab1" class="ui-state-default ui-corner-top ui-tabs-active ui-state-active">
+													<a href="#tab-1"><span class="licon-camera2"></span>Φωτογραφιες (6)</a>
+												</li>
+												<li data-tab="tab2">
+													<a href="#tab-2"><span class="licon-map-marker"></span>Βρειτε μας</a>
+												</li>
+											</ul>
+											<!--tabs content-->                 
+											<div class="tabs-content">
+												<div id="tab-1">
+													<div class="owl-carousel type-small owl-theme owl-responsive-1400 owl-loaded" data-sync="#sync-carousel-1" data-max-items="5" data-item-margin="20"  *ngFor="let image of car.images">
+														<div class="item-carousel">
+															<img [src]="image.path_thumbnail" alt="">
+														</div>
+													</div>
+												</div>
+												<div id="tab-2">
+													Βιομηχανικό Πάρκο Νεοχωρούδας, 54500 Ωραιόκαστρο, Θεσσαλονίκη
+												</div>
+											</div>
+										</div>
+										
+									</div>
+									
+								</div>
+								
+								<div class="content-element3">									
+									<h4><b>Χαρακτηριστικά</b></h4>
+									<ul class="car-detail-list">
+										<li class="flex-row flex-justify">
+											<div class="detail-col">
+												<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
+											</div>
+											<div class="detail-col">
+												<span>Αμάξωμα</span><span>{{ car.trim }}</span>
+											</div>											
+										</li>
+										<li class="flex-row flex-justify">											
+											<div class="detail-col">
+												<span>Χρονολογία </span><span>{{ car.year }}</span>
+											</div>
+											<div class="detail-col">
+												<span>Χρώμα</span><span>{{ car.car_color }}</span>
+											</div>											
+										</li>
+										<li class="flex-row flex-justify">											
+											<div class="detail-col">
+												<span>Σασμάν</span><span>Χειροκίνητο(?)</span>
+											</div>
+											<div class="detail-col">
+												<span>Καύσιμο</span><span>{{ car.fuel }}</span>
+											</div>											
+										</li>
+										<li class="flex-row flex-justify">
+											<div class="detail-col">
+												<span>Αρ. πλαισίου</span><span>{{ car.chassis_number }}</span>
+											</div>
+											<div class="detail-col">
+												<span>Αρ. μηχανής</span><span>{{ car.engine_number }}</span>
+											</div>											
+										</li>
+									</ul>
+								</div>								
+								<div class="content-element3">									
+									<h4><b> Επιπλέον εξοπλισμός</b></h4>
+									<div class="features-section">										
+										<div class="row">
+											<div class="col-xs-12">
+												<ul class="custom-list type-5">
+													<li *ngIf="car.extra_ac">Air Condition</li>
+													<li *ngIf="car.extra_sun_roof">Ηλιοροφή</li>
+													<li *ngIf="car.extra_windows">Ηλεκτρικά παράθυρα</li>
+													<li *ngIf="car.extra_navigation">Navigation</li>
+													<li *ngIf="car.extra_kotsadoros">Κοτσαδόρος</li>
+													<li *ngIf="car.extra_mirrors">Ηλεκτρικοί καθρέφτες</li>
+													<li *ngIf="car.extra_leather_seats">Δερμάτινα καθίσματα</li>
+												</ul>												
+											</div>
+										</div>
+									</div>										
+								</div>									
+
+							</div>
+
+						</main>
+						<aside id="sidebar" class="col-md-4">
+
+							<div class="content-element3">	
+								<a href="#" class="btn btn-big btn-style-3 sidebar-btn" content="telephone=no"><i class="licon-telephone"></i><b>2310 781295</b></a>
+
+								<div class="question-form bg-sidebar-item">									
+									<h5>Ζήτα ανταλλακτικά</h5>
+									<p>Ρώτησε μας για τη διαθεσιμότητα και την κατάσταση των ανταλλακτικών που σε ενδιαφέρουν στο 2310781295 ή μέσα από την παρακάτω φόρμα.</p>					
+									<form>										
+										<textarea rows="3" placeholder="Γράψε εδώ ποια ανταλλακτικά χρειάζεσαι από το {{ car.make }} {{ car.model }}, {{ car.year }}"></textarea>
+										<input type="text" placeholder="Όνομα">
+										<input type="text" placeholder="Email">
+										<input type="text" placeholder="Τηλέφωνο">
+										<div class="custom-select">
+											<div class="select-title">Νομός</div>
+											<ul id="menu-type" class="select-list"></ul>
+											<select class="hide">
+												<option value="menu">Service 1</option>
+												<option value="menu">Service 2</option>
+												<option value="menu">Service 3</option>
+											</select>
+										</div>										
+									</form>									
+									<a href="#" class="btn btn-style-3">Ζητησε ανταλλακτικα</a>									
+								</div>								
+								<a href="#" class="btn btn-big sidebar-btn"><i class="licon-profile"></i>Seller Profile</a>
+								<a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 contact-button"><i class="licon-car2"></i>Schedule a Test Drive</a>
+								<a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 calc-button"><i class="licon-calculator2"></i>Calculate Payments</a>
+								<a href="javascript:;" class="btn btn-big sidebar-btn btn-style-4 trade-button"><i class="licon-receipt"></i>Trade-in Appraisal</a>								
+							</div>
+
+							<h5 class="section-title">Σχετικά μοντέλα</h5>
+
+							<div class="products-holder view-list">								
+								<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->								
+								<div class="product">									
+									<div class="product-image">
+										<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/032/827/thumb/DSCN9288.JPG" alt=""></a>
+									</div>
+									<div class="product-description">										
+										<h5 class="product-name"><a href="#">Nissan Primera, 2000</a></h5>
+										<div class="model-loc">
+											<ul>
+												<li><span>Κωδικος</span>2636</li>
+												<li><span>Κιβυκα</span>1600 cc</li>
+											</ul>
+										</div>
+									</div>
+								</div>								
+								<!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
+								<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->								
+								<div class="product">									
+									<div class="product-image">
+										<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/032/827/thumb/DSCN9288.JPG" alt=""></a>
+									</div>
+									<div class="product-description">										
+										<h5 class="product-name"><a href="#">Nissan Primera, 2000</a></h5>
+										<div class="model-loc">
+											<ul>
+												<li><span>Κωδικος</span>2636</li>
+												<li><span>Κιβυκα</span>1600 cc</li>
+											</ul>
+										</div>
+									</div>
+								</div>								
+								<!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
+								<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->								
+								<div class="product">									
+									<div class="product-image">
+										<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/032/827/thumb/DSCN9288.JPG" alt=""></a>
+									</div>
+									<div class="product-description">										
+										<h5 class="product-name"><a href="#">Nissan Primera, 2000</a></h5>
+										<div class="model-loc">
+											<ul>
+												<li><span>Κωδικος</span>2636</li>
+												<li><span>Κιβυκα</span>1600 cc</li>
+											</ul>
+										</div>	
+									</div>
+								</div>								
+								<!-- - - - - - - - - - - - - - /Product - - - - - - - - - - - - - - - - -->
+							</div>
+
+							<a href="#" class="info-btn">Προβολή περισσότερων</a>
+						</aside>
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- section similar car -->
+			<div class="page-section-bg">				
+				<div class="container">					
+					<h3 class="section-title">Σχετικά αυτοκίνητα</h3>					
+					<div class="carousel-type-3">						
+						<div class="owl-carousel products-holder" data-max-items="4" data-item-margin="30">							
+							<!-- similar car -->
+							<div class="product">								
+								<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/031/564/view/DSCN7688.jpg" alt=""></a>								
+								<div class="product-description">									
+									<h5 class="product-name"><a href="#">Honda Civic, 1998</a></h5>
+									<div class="pricing-area"></div>
+									<div class="model-loc">
+										<ul>
+											<li><span>Κωδικος</span>2636</li>
+											<li><span>Εκδοση</span>2636</li>
+											<li><span>Κιβυκα</span>1600 cc</li>
+										</ul>
+									</div>
+									<div class="model-info">										
+										<a href="#">Περισσότερα</a>
+										<a href="#">Wishlist</a>										
+									</div>
+								</div>								
+							</div>
+							<!--/ similar car -->
+							<!-- similar car -->
+							<div class="product">								
+								<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/031/564/view/DSCN7688.jpg" alt=""></a>								
+								<div class="product-description">									
+									<h5 class="product-name"><a href="#">Honda Civic, 1998</a></h5>
+									<div class="pricing-area"></div>
+									<div class="model-loc">
+										<ul>
+											<li><span>Κωδικος</span>2636</li>
+											<li><span>Εκδοση</span>2636</li>
+											<li><span>Κιβυκα</span>1600 cc</li>
+										</ul>
+									</div>
+									<div class="model-info">										
+										<a href="#">Περισσότερα</a>
+										<a href="#">Wishlist</a>										
+									</div>
+								</div>								
+							</div>
+							<!--/ similar car -->
+							<!-- similar car -->
+							<div class="product">								
+								<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/031/564/view/DSCN7688.jpg" alt=""></a>								
+								<div class="product-description">									
+									<h5 class="product-name"><a href="#">Honda Civic, 1998</a></h5>
+									<div class="pricing-area"></div>
+									<div class="model-loc">
+										<ul>
+											<li><span>Κωδικος</span>2636</li>
+											<li><span>Εκδοση</span>2636</li>
+											<li><span>Κιβυκα</span>1600 cc</li>
+										</ul>
+									</div>
+									<div class="model-info">										
+										<a href="#">Περισσότερα</a>
+										<a href="#">Wishlist</a>										
+									</div>
+								</div>								
+							</div>
+							<!--/ similar car -->
+							<!-- similar car -->
+							<div class="product">								
+								<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/031/564/view/DSCN7688.jpg" alt=""></a>								
+								<div class="product-description">									
+									<h5 class="product-name"><a href="#">Honda Civic, 1998</a></h5>
+									<div class="pricing-area"></div>
+									<div class="model-loc">
+										<ul>
+											<li><span>Κωδικος</span>2636</li>
+											<li><span>Εκδοση</span>2636</li>
+											<li><span>Κιβυκα</span>1600 cc</li>
+										</ul>
+									</div>
+									<div class="model-info">										
+										<a href="#">Περισσότερα</a>
+										<a href="#">Wishlist</a>										
+									</div>
+								</div>								
+							</div>
+							<!--/ similar car -->
+							<!-- similar car -->
+							<div class="product">								
+								<a href="#"><img src="https://s3.amazonaws.com/antalaktika.aposirsi.gr/images/uploaded_files/000/031/564/view/DSCN7688.jpg" alt=""></a>								
+								<div class="product-description">									
+									<h5 class="product-name"><a href="#">Honda Civic, 1998</a></h5>
+									<div class="pricing-area"></div>
+									<div class="model-loc">
+										<ul>
+											<li><span>Κωδικος</span>2636</li>
+											<li><span>Εκδοση</span>2636</li>
+											<li><span>Κιβυκα</span>1600 cc</li>
+										</ul>
+									</div>
+									<div class="model-info">										
+										<a href="#">Περισσότερα</a>
+										<a href="#">Wishlist</a>										
+									</div>
+								</div>								
+							</div>
+							<!--/ similar car -->
+						</div>						
+					</div>					
+				</div>				
+			</div>
+			<!-- section similar car -->
+		</div>
+		<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
