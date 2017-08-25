@@ -25,16 +25,14 @@
 
 											<div id="tab1" class="tab-cont current">
 
-												<div class="owl-carousel owl-theme owl-responsive-1400 owl-loaded" id="sync-carousel-1" data-max-items="1" *ngFor="let image of car.images">																		
-													<div class="item-carousel">
-														<a class="fancybox" data-fancybox="group">
+												<div class="owl-carousel owl-theme owl-responsive-1400 owl-loaded" id="sync-carousel-1" data-max-items="1">																		
+													<div class="item-carousel" *ngFor="let image of car.images">
+														<a href="{{image.path_original}}"  class="fancybox" data-fancybox="group">
 															<img [src]="image.path_view" alt="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}">
 														</a>
 													</div>		
 
 												</div>	
-
-
 
 											</div>
 

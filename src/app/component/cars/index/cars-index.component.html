@@ -3,7 +3,9 @@
 	<div class="container">				
 		<div class="row">					
 			<aside id="sidebar" class="sbl style-2 col-md-3 col-sm-12">
-				<app-filters></app-filters>
+				<app-filters (onRefresh)="refreshCars($event)">
+					
+				</app-filters>
 			</aside>
 			<main id="main" class="col-md-9 col-sm-12">            
 				<div class="dealers-section product-type">

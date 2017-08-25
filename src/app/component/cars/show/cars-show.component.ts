@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -6,16 +6,20 @@ import { MessageService } from '../../../services/message.service';
 import { CarService } from '../../../services/car.service';
 import { Car } from '../../../models/car';
 
+import $ from 'jquery/dist/jquery';
+declare var $: any;
+
 @Component({
 	selector: 'app-cars-show',
 	templateUrl: './cars-show.component.html',
 	styleUrls: ['./cars-show.component.css']
 })
-export class CarsShowComponent implements OnInit {
+export class CarsShowComponent implements OnInit, AfterViewInit {
 
 	car: Car;
 	id: number;
 	response: string;
+
 
 	constructor(
 		private carService: CarService,
@@ -57,4 +61,12 @@ export class CarsShowComponent implements OnInit {
 		this.getCar(this.id);
 	}
 
+
+
+	ngAfterViewInit() {
+		$.getScript('../../../assets/js/script.js', function(){});
+		$.getScript('../../../assets/js/plugins.js', function(){});
+$.getScript('../../../assets/plugins/owl.carousel.min.js', function(){});
+		
+	}
 }
