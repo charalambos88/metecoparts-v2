@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { routes } from './app.router';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/commons/header/header.component';
@@ -43,6 +45,7 @@ import { MessageService } from './services/message.service';
   FormsModule,
   ReactiveFormsModule,
   HttpModule,
+  NgbModule.forRoot(),
   routes
   ],
   providers: [

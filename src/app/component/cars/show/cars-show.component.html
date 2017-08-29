@@ -21,54 +21,22 @@
 								
 								<div class="content-element3">									
 									<div class="carousel-type-4 type-2">
-										<div class="carousel-tabs" style="height: 430px;">			
-
+										<div class="carousel-tabs">
 											<div id="tab1" class="tab-cont current">
-
-												<div class="owl-carousel owl-theme owl-responsive-1400 owl-loaded" id="sync-carousel-1" data-max-items="1">																		
-													<div class="item-carousel" *ngFor="let image of car.images">
-														<a href="{{image.path_original}}"  class="fancybox" data-fancybox="group">
-															<img [src]="image.path_view" alt="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}">
+												<ngb-carousel>
+													<ng-template ngbSlide *ngFor="let image of car.images; let i = index">
+												<a href="{{image.path_original}}" 
+															class="fancybox" 
+															data-fancybox="group"
+															title="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }} - Εικόνα: {{i + 1}} από {{ car.images.length }}">
+																	<img src="{{image.path_view}}" alt="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}">
 														</a>
-													</div>		
-
-												</div>	
-
-											</div>
-
-											<div id="tab2" class="tab-cont">
-												<div id="googleMap3" class="map-container"></div>	
+													</ng-template>
+												</ngb-carousel>
 											</div>											
 										</div>										
-										<div class="tabs tabs-section style-2 clearfix">
-											<!--tabs navigation-->                  
-											<ul class="tabs-nav clearfix">
-												<li data-tab="tab1" class="ui-state-default ui-corner-top ui-tabs-active ui-state-active">
-													<a href="#tab-1"><span class="licon-camera2"></span>Φωτογραφιες (6)</a>
-												</li>
-												<li data-tab="tab2">
-													<a href="#tab-2"><span class="licon-map-marker"></span>Βρειτε μας</a>
-												</li>
-											</ul>
-											<!--tabs content-->                 
-											<div class="tabs-content">
-												<div id="tab-1">
-													<div class="owl-carousel type-small owl-theme owl-responsive-1400 owl-loaded" data-sync="#sync-carousel-1" data-max-items="5" data-item-margin="20"  *ngFor="let image of car.images">
-														<div class="item-carousel">
-															<img [src]="image.path_thumbnail" alt="">
-														</div>
-													</div>
-												</div>
-												<div id="tab-2">
-													Βιομηχανικό Πάρκο Νεοχωρούδας, 54500 Ωραιόκαστρο, Θεσσαλονίκη
-												</div>
-											</div>
-										</div>
-										
-									</div>
-									
-								</div>
-								
+									</div>									
+								</div>								
 								<div class="content-element3">									
 									<h4><b>Χαρακτηριστικά</b></h4>
 									<ul class="car-detail-list">

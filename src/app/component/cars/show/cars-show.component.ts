@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
+
 import { MessageService } from '../../../services/message.service';
 import { CarService } from '../../../services/car.service';
 import { Car } from '../../../models/car';
@@ -64,9 +65,6 @@ export class CarsShowComponent implements OnInit, AfterViewInit {
 
 
 	ngAfterViewInit() {
-		$.getScript('../../../assets/js/script.js', function(){});
-		$.getScript('../../../assets/js/plugins.js', function(){});
-$.getScript('../../../assets/plugins/owl.carousel.min.js', function(){});
 		
 	}
 }
