@@ -69,7 +69,7 @@
 			<div class="col-sm-4 col-xs-6" *ngFor="let car of cars">
 				<div class="product">
 					<figure class="product-image">
-						<a href="#"><img [src]="car.images[0].path_view" alt=""></a>
+						<a [routerLink]="[car.id]" title="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}"><img [src]="car.images[0].path_view" alt=""></a>
 						<div class="overlay full-width-block">
 							<div class="icon-fancy">
 								<a href="https://s3.amazonaws.com/antalaktika.aposirsi.gr/./assets/images/uploaded_files/000/028/710/view/DSCN3794.jpg" class="fancybox" data-fancybox="group"><i class="licon-camera2"></i><span>7</span></a>
@@ -141,13 +141,6 @@
 			</div>	
 		</div>
 	</div>
-	<ul class="pagination">
-		<li><a href="#" class="prev-page"></a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#" class="next-page"></a></li>
-	</ul>
 </main>
 </div>
 </div>

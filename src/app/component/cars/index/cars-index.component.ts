@@ -17,7 +17,6 @@ export class CarsIndexComponent implements OnInit {
 	make:string;
 	model: string;
 
-
 	private filters = new Map;
 
 	constructor(
@@ -28,8 +27,8 @@ export class CarsIndexComponent implements OnInit {
 
 	getCars(filters: Map<string, any>): void {
 		this.carService
-			.getCars(filters)
-			.then(response => this.cars = response);
+		.getCars(filters)
+		.then(response => this.cars = response);
 	}
 
 	refreshCars(event): void {
@@ -73,5 +72,4 @@ export class CarsIndexComponent implements OnInit {
 		this.isList = !this.isList;
 		this.activeList = !this.activeList;
 	}
-
 }
