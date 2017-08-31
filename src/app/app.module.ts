@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { routes } from './app.router';
-
+import { LoadingModule } from 'ngx-loading';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/commons/header/header.component';
@@ -24,6 +24,8 @@ import { CarService } from './services/car.service';
 import { MakeService } from './services/make.service';
 import { MessageService } from './services/message.service';
 
+import { ReplaceSpacePipe } from './replace-space.pipe';
+
 @NgModule({
   declarations: [
   AppComponent,
@@ -38,7 +40,8 @@ import { MessageService } from './services/message.service';
   CarsShowComponent,
   SidebarComponent,
   FiltersComponent,
-  TermsComponent
+  TermsComponent,
+  ReplaceSpacePipe
   ],
   imports: [
   BrowserModule,
@@ -46,9 +49,11 @@ import { MessageService } from './services/message.service';
   ReactiveFormsModule,
   HttpModule,
   NgbModule.forRoot(),
+  LoadingModule,
   routes
   ],
   providers: [
+  Title,
   CarService,
   MakeService,
   MessageService

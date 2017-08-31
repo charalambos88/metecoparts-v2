@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Router, ActivatedRoute, Params } from'@angular/router';
+import { Title } from "@angular/platform-browser";
 
 import { CarService } from '../../../services/car.service';
 import { Car } from '../../../models/car';
@@ -13,6 +14,7 @@ import 'rxjs/add/operator/map';
 	styleUrls: ['./cars-index.component.css']
 })
 export class CarsIndexComponent implements OnInit {
+	public loading = false;
 	cars: Car[];
 	make:string;
 	model: string;
@@ -22,16 +24,20 @@ export class CarsIndexComponent implements OnInit {
 	constructor(
 		private carService: CarService,
 		private route: ActivatedRoute,
-		private router: Router
-		) {}
+		private router: Router,
+		title: Title
+		) 
+	{
+		title.setTitle("Αναζήτηση για μεταχειρισμένα ανταλλακτικά αυτοκινήτων - Meteco AE");
+	}
 
 	getCars(filters: Map<string, any>): void {
 		this.carService
 		.getCars(filters)
-		.then(response => this.cars = response);
+		.then(response => this.cars = response);		
 	}
 
-	refreshCars(event): void {
+	refreshCars(event): void {		
 		for (var key in event){
 			if (event.hasOwnProperty(key)) {
 				if (event[key] === null) {
@@ -39,7 +45,7 @@ export class CarsIndexComponent implements OnInit {
 				}
 				else
 				{
-					this.filters.set(key, event[key]);
+					this.filters.set(key, event[key]);					
 				}
 			}
 		}
@@ -51,12 +57,13 @@ export class CarsIndexComponent implements OnInit {
 			for (var key in params) {
 				if (params.hasOwnProperty(key)) {
 					if(params[key]) {
-						this.filters.set(key, params[key]);
+						this.filters.set(key, params[key]);						
 					}
 				}
 			}
 		})
-		this.getCars(this.filters)
+		this.getCars(this.filters)		
+		
 	}
 
 	//dom manipulation

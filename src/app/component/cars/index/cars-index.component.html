@@ -3,13 +3,15 @@
 	<div class="container">				
 		<div class="row">					
 			<aside id="sidebar" class="sbl style-2 col-md-3 col-sm-12">
-				<app-filters (onRefresh)="refreshCars($event)">
+				<app-filters  (onRefresh)="refreshCars($event)">
 					
 				</app-filters>
 			</aside>
+
 			<main id="main" class="col-md-9 col-sm-12">            
 				<div class="dealers-section product-type">
-					<h1 class="section-title tt-uppercase">Μεταχειρισμένα ανταλλακτικά για <span class="fw-medium">Opel Corsa B, 1992-1998</span></h1>            
+					<h1 class="section-title tt-uppercase">Μεταχειρισμένα ανταλλακτικά για <span class="fw-medium">Opel Corsa B1, 1992-1998</span></h1> 
+					<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>           
 					<!-- dealer sorting -->							
 					<div class="flex-row flex-justify">								
 						<div class="sort-dealer">									
@@ -69,7 +71,7 @@
 			<div class="col-sm-4 col-xs-6" *ngFor="let car of cars">
 				<div class="product">
 					<figure class="product-image">
-						<a [routerLink]="[car.id]" title="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}"><img [src]="car.images[0].path_view" alt=""></a>
+						<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}" title="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}"><img [src]="car.images[0].path_view" alt=""></a>
 						<div class="overlay full-width-block">
 							<div class="icon-fancy">
 								<a href="https://s3.amazonaws.com/antalaktika.aposirsi.gr/./assets/images/uploaded_files/000/028/710/view/DSCN3794.jpg" class="fancybox" data-fancybox="group"><i class="licon-camera2"></i><span>7</span></a>
@@ -85,7 +87,7 @@
 						<div class="row">
 							<div class="col-xs-8">                          
 								<h2 class="product-name">
-									<a [routerLink]="[car.id]">
+									<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}">
 										{{ car.make }} {{ car.model }}, {{ car.year }}, {{ car.cubism }} <span class="contact-title">cc</span>
 									</a>
 								</h2>
@@ -124,14 +126,14 @@
 								<div class="dealer-item">
 									<div class="dealer-desc">
 										<div class="contact-section">
-											<div class="contact-item">
-												<span class="contact-title"><i class="licon-tags"></i># {{ car.id }}</span>
+											<div class="contact-item" >
+												<span class="contact-title" ><i class="licon-tags"></i># {{ car.id }}</span>
 											</div>
 											<div class="contact-item">
-												<span class="contact-title"><i class="licon-clock3"></i> {{car.created_at * 1000 | date: 'dd/MM/yyyy'}}</span>
+												<span class="contact-title" ><i class="licon-clock3"></i> {{car.created_at * 1000 | date: 'dd/MM/yyyy'}}</span>
 											</div>
 										</div>
-										<a [routerLink]="[car.id]" class="btn btn-small">Προβολη</a>
+										<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}" class="btn btn-small">Προβολη</a>
 									</div>
 								</div>
 							</div>
@@ -141,6 +143,13 @@
 			</div>	
 		</div>
 	</div>
+	<ul class="pagination">
+		<li><a href="#" class="prev-page"></a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#" class="next-page"></a></li>
+	</ul>
 </main>
 </div>
 </div>

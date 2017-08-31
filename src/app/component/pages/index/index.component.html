@@ -195,46 +195,57 @@
 	<div class="container">					
 		<h3 class="section-title">ΤΕΛΕΥΤΑΙΕΣ ΑΓΓΕΛΙΕΣ</h3>					
 		<div class="products-holder">						
-			<div class="tabs tabs-section style-2 clearfix">
-				<!--tabs navigation-->                  
-				<ul class="tabs-nav clearfix">
-					<li>
-						<a href="#nees_paralaves">ΜΟΛΙΣ ΠΑΡΑΛΑΒΑΜΕ</a>
-					</li>
-				</ul>
-				<!--tabs content-->                 
-				<div class="tabs-content">
-					<div id="nees_paralaves">									
-						<div class="row flex-row">										
-							<div class="col-md-3 col-xs-6" *ngFor="let car of cars">											
-								<div class="product">												
-									<a href="#"><img src="./assets/images/262x173_img3.jpg" alt=""></a>
-									<div class="product-description">
-										<h5 class="product-name"><a href="#">{{ car.make }}</a></h5>
-										<div class="pricing-area">
-											<div class="product-price">$26,459</div>
-										</div>
-										<div class="model-loc">
-											<ul>
-												<li><span>Mileage</span>241</li>
-												<li><span>Location</span>Within 4 km</li>
-											</ul>
-										</div>
-										<div class="model-info">
-											<a href="#">More Info</a>
-											<a href="#">Wishlist</a>
-											<a href="#">Compare</a>
-										</div>
-									</div>									
-								</div>
+			<div class="style-2 clearfix"> 
+				<div id="nees_paralaves">									
+					<div class="row flex-row">							
+						<div class="col-md-3 col-xs-6" *ngFor="let car of cars | slice:0:4">
+							<div class="product" >												
+								<a routerLink="metaxireismena-antallaktika/{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}"><img [src]="car.images[0].path_view" alt="{{ car.make }} {{ car.model }}, {{ car.year }}"></a>
+								<div class="product-description">
+									<h5 class="product-name"><a routerLink="metaxireismena-antallaktika/{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}">{{ car.make }} {{ car.model }}, {{ car.year }}</a></h5>
+									<div class="content-element8">							
+										<ul class="car-detail-list">
+											<li class="flex-row flex-justify">
+												<div class="detail-col">
+													<span>Ημερομηνία</span><span>{{car.created_at * 1000 | date: 'dd/MM/yyyy'}}</span>
+												</div>									
+											</li>
+											<li class="flex-row flex-justify">
+												<div class="detail-col">
+													<span>Αμάξωμα</span><span>{{ car.trim }}</span>
+												</div>									
+											</li>
+											<li class="flex-row flex-justify">
+												<div class="detail-col">
+													<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
+												</div>									
+											</li>
+											<li class="flex-row flex-justify">
+												<div class="detail-col">
+													<span>Χρώμα</span><span>{{ car.car_color }}</span>
+												</div>									
+											</li>
+											<li class="flex-row flex-justify">
+												<div class="detail-col">
+													<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
+												</div>									
+											</li>
+											<li class="flex-row flex-justify">
+												<div class="detail-col">
+													<span>Καύσιμο</span><span>{{ car.fuel }}</span>
+												</div>									
+											</li>
+										</ul>
+									</div>
+								</div>									
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>				
 			</div>						
 		</div>					
 		<div class="align-center">
-			<a href="#" class="btn">Προβολη Ολων</a>
+			<a routerLink="/metaxireismena-antallaktika" class="btn">Προβολη Ολων</a>
 		</div>					
 	</div>				
 </div>			

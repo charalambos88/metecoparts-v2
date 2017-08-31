@@ -1,10 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { Title } from '@angular/platform-browser';
 
 import { MessageService } from '../../../services/message.service';
 import { CarService } from '../../../services/car.service';
+import { MakeService } from '../../../services/make.service';
 import { Car } from '../../../models/car';
 
 import $ from 'jquery/dist/jquery';
@@ -21,14 +22,18 @@ export class CarsShowComponent implements OnInit, AfterViewInit {
 	id: number;
 	response: string;
 
-
 	constructor(
 		private carService: CarService,
+		private makeService: MakeService,
 		private route: ActivatedRoute,
 		private router: Router,
 		public fb: FormBuilder,
-		private messageService: MessageService
-		) { }
+		private messageService: MessageService,
+		title: Title) 
+	{ 
+		title.setTitle(`Μεταχειρισμένα ανταλλακτικά  για AE`);
+
+	}
 
 	public contactForm = this.fb.group({
 		car_id: [null, Validators.required],
@@ -52,7 +57,9 @@ export class CarsShowComponent implements OnInit, AfterViewInit {
 		this.carService
 		.getCar(id)
 		.then(car => this.car = car);
-	}
+		
+	}	
+
 
 	ngOnInit() {
 		this.route.params.subscribe((params: Params) => {

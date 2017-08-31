@@ -29,6 +29,13 @@ export class FiltersComponent implements OnInit {
 	selectedVersion: Version;
 	selectedFacelift: Facelift;
 
+	menuState:string = 'out';
+	
+	toggleMenu() {
+		// 1-line if statement that toggles the value:
+		this.menuState = this.menuState === 'out' ? 'in' : 'out';
+	}
+
 	constructor(
 		private carService: CarService,
 		private makeService: MakeService,

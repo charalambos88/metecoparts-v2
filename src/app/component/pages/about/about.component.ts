@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 declare var $: any;
 
 @Component({
@@ -8,8 +9,8 @@ declare var $: any;
 })
 export class AboutComponent implements OnInit {
 
-	constructor() {
-		
+	constructor(title:Title) {
+		title.setTitle("Για εμάς - Μεταχειρισμένα ανταλλακτικά αυτοκινήτων - Meteco AE");		
 	}
 
 	ngOnInit() {
