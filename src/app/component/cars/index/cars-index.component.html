@@ -1,23 +1,24 @@
-<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->		
-<div id="content" class="page-content-wrap">			
-	<div class="container">				
-		<div class="row">					
+<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
+<div id="content" class="page-content-wrap">
+	<div class="container">
+		<div class="row">
 			<aside id="sidebar" class="sbl style-2 col-md-3 col-sm-12">
-				<app-filters  (onRefresh)="refreshCars($event)">
-					
+				<app-filters (onRefresh)="refreshCars($event)">
+
 				</app-filters>
 			</aside>
 
-			<main id="main" class="col-md-9 col-sm-12">            
+			<main id="main" class="col-md-9 col-sm-12">
 				<div class="dealers-section product-type">
-					<h1 class="section-title tt-uppercase">Μεταχειρισμένα ανταλλακτικά για <span class="fw-medium">Opel Corsa B1, 1992-1998</span></h1> 
-					<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>           
-					<!-- dealer sorting -->							
-					<div class="flex-row flex-justify">								
-						<div class="sort-dealer">									
-							<div class="sort-col">										
+					<h1 class="section-title tt-uppercase">Μεταχειρισμένα ανταλλακτικά για <span class="fw-medium">Opel Corsa B1, 1992-1998</span></h1>
+					<div>Pages: {{pages}}</div>
+					<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+					<!-- dealer sorting -->
+					<div class="flex-row flex-justify">
+						<div class="sort-dealer">
+							<div class="sort-col">
 								<div class="flex-row flex-center">
-									<span>Ταξινόμηση κατά</span>
+									<span>Ταξινόμηση κατά </span>
 									<div class="custom-select">
 										<div class="select-title"> Ημ/μνία ανάρτησης</div>
 										<ul id="menu-type2" class="select-list"></ul>
@@ -26,10 +27,10 @@
 											<option value="menu">Option 2</option>
 											<option value="menu">Option 3</option>
 										</select>
-									</div>											
-								</div>										
+									</div>
+								</div>
 							</div>
-							<div class="sort-col">										
+							<div class="sort-col">
 								<div class="flex-row flex-center">
 									<span>Per page</span>
 									<div class="custom-select">
@@ -40,118 +41,114 @@
 											<option value="menu">2</option>
 											<option value="menu">3</option>
 										</select>
-									</div>											
-								</div>										
-							</div>									
-						</div>								
-						<div class="settings-view-products">
-							<div class="sort-criteria">	
-								<div class="view-type">	
-									<a title="grid View" 
-									style="cursor: pointer;"
-									[class.active]="!activeList" 
-									(click)="onclickGrid()"
-									>
-									<i class="licon-icons"></i>
-								</a>	
-								<a title="list View" 
-								style="cursor: pointer;"
-								[class.active]="activeList"
-								(click)="onclickList()">
-								<i class="licon-menu2"></i>
-							</a>
-						</div>										
-					</div><!--/ .sort-criteria -->
-				</div>
-			</div>
-		</div>
-		<div id="product-holder" class="products-holder" 
-		[ngClass]="{'view-list':isList, 'view-grid':!isList}">
-		<div class="row flex-row">
-			<div class="col-sm-4 col-xs-6" *ngFor="let car of cars">
-				<div class="product">
-					<figure class="product-image">
-						<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}" title="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}"><img [src]="car.images[0].path_view" alt=""></a>
-						<div class="overlay full-width-block">
-							<div class="icon-fancy">
-								<a href="https://s3.amazonaws.com/antalaktika.aposirsi.gr/./assets/images/uploaded_files/000/028/710/view/DSCN3794.jpg" class="fancybox" data-fancybox="group"><i class="licon-camera2"></i><span>7</span></a>
-								<a href="#"><i class="licon-camera"></i><span>1</span></a>
-							</div>
-							<div>
-								<a href="#"><i class="licon-heart"></i></a>
-								<a href="#"><i class="licon-copy"></i></a>
-							</div>
-						</div>
-					</figure>
-					<div class="product-description">
-						<div class="row">
-							<div class="col-xs-8">                          
-								<h2 class="product-name">
-									<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}">
-										{{ car.make }} {{ car.model }}, {{ car.year }}, {{ car.cubism }} <span class="contact-title">cc</span>
-									</a>
-								</h2>
-								<p>{{ car.version }}<br>{{ car.engine_bundle }}</p>
-								<div class="content-element8">							
-									<ul class="car-detail-list">
-										<li class="flex-row flex-justify">
-											<div class="detail-col">
-												<span>Αμάξωμα</span><span>{{ car.trim }}</span>
-											</div>									
-										</li>
-										<li class="flex-row flex-justify">
-											<div class="detail-col">
-												<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
-											</div>									
-										</li>
-										<li class="flex-row flex-justify">
-											<div class="detail-col">
-												<span>Χρώμα</span><span>{{ car.car_color }}</span>
-											</div>									
-										</li>
-										<li class="flex-row flex-justify">
-											<div class="detail-col">
-												<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
-											</div>									
-										</li>
-										<li class="flex-row flex-justify">
-											<div class="detail-col">
-												<span>Καύσιμο</span><span>{{ car.fuel }}</span>
-											</div>									
-										</li>
-									</ul>
+									</div>
 								</div>
 							</div>
-							<div class="col-xs-4">
-								<div class="dealer-item">
-									<div class="dealer-desc">
-										<div class="contact-section">
-											<div class="contact-item" >
-												<span class="contact-title" ><i class="licon-tags"></i># {{ car.id }}</span>
-											</div>
-											<div class="contact-item">
-												<span class="contact-title" ><i class="licon-clock3"></i> {{car.created_at * 1000 | date: 'dd/MM/yyyy'}}</span>
+						</div>
+						<div class="settings-view-products">
+							<div class="sort-criteria">
+								<div class="view-type">
+									<a title="grid View" style="cursor: pointer;" [class.active]="!activeList" (click)="onclickGrid()">
+									<i class="licon-icons"></i>
+								</a>
+									<a title="list View" style="cursor: pointer;" [class.active]="activeList" (click)="onclickList()">
+								<i class="licon-menu2"></i>
+							</a>
+								</div>
+							</div>
+							<!--/ .sort-criteria -->
+						</div>
+					</div>
+				</div>
+				<div id="product-holder" class="products-holder" [ngClass]="{'view-list':isList, 'view-grid':!isList}">
+					<div class="row flex-row">
+						<div class="col-sm-4 col-xs-6" *ngFor="let car of cars">
+							<div class="product">
+								<figure class="product-image">
+									<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}"
+									 title="Μεταχειρισμένα ανταλλακτικά για {{ car.make}} {{ car.model }} {{ car.year }}"><img [src]="car.images[0].path_view" alt=""></a>
+									<div class="overlay full-width-block">
+										<div class="icon-fancy">
+											<a href="https://s3.amazonaws.com/antalaktika.aposirsi.gr/./assets/images/uploaded_files/000/028/710/view/DSCN3794.jpg" class="fancybox"
+											 data-fancybox="group"><i class="licon-camera2"></i><span>7</span></a>
+											<a href="#"><i class="licon-camera"></i><span>1</span></a>
+										</div>
+										<div>
+											<a href="#"><i class="licon-heart"></i></a>
+											<a href="#"><i class="licon-copy"></i></a>
+										</div>
+									</div>
+								</figure>
+								<div class="product-description">
+									<div class="row">
+										<div class="col-xs-8">
+											<h2 class="product-name">
+												<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}">
+										{{ car.make }} {{ car.model }}, {{ car.year }}, {{ car.cubism }} <span class="contact-title">cc</span>
+									</a>
+											</h2>
+											<p>{{ car.version }}<br>{{ car.engine_bundle }}</p>
+											<div class="content-element8">
+												<ul class="car-detail-list">
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Αμάξωμα</span><span>{{ car.trim }}</span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Χρώμα</span><span>{{ car.car_color }}</span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Καύσιμο</span><span>{{ car.fuel }}</span>
+														</div>
+													</li>
+												</ul>
 											</div>
 										</div>
-										<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}" class="btn btn-small">Προβολη</a>
+										<div class="col-xs-4">
+											<div class="dealer-item">
+												<div class="dealer-desc">
+													<div class="contact-section">
+														<div class="contact-item">
+															<span class="contact-title"><i class="licon-tags"></i># {{ car.id }}</span>
+														</div>
+														<div class="contact-item">
+															<span class="contact-title"><i class="licon-clock3"></i> {{car.created_at * 1000 | date: 'dd/MM/yyyy'}}</span>
+														</div>
+													</div>
+													<a routerLink="{{car.id}}-{{car.make|lowercase|replacespacepipe}}-{{car.model|lowercase|replacespacepipe}}-{{car.year}}"
+													 class="btn btn-small">Προβολη</a>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>	
+				<ul class="pagination">
+					<li><a href="#" class="prev-page"></a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#" class="next-page"></a></li>
+				</ul>
+			</main>
 		</div>
 	</div>
-	<ul class="pagination">
-		<li><a href="#" class="prev-page"></a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#" class="next-page"></a></li>
-	</ul>
-</main>
 </div>
-</div>
-</div>
-			<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->

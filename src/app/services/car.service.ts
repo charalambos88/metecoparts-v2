@@ -1,8 +1,11 @@
-import { Injectable }    from '@angular/core';
-import { Headers, Http, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Car } from '../models/car';
+import { Page } from '../models/pages';
 
 @Injectable()
 export class CarService {
@@ -15,11 +18,11 @@ export class CarService {
     headers.append('user', '1');
   }
 
-  createParams(carsUrl: string,filters: Map<string, any>) :string {
+  createParams(carsUrl: string, filters: Map<string, any>): string {
     if (filters) {
       carsUrl = carsUrl.concat('?');
     }
-    filters.forEach(function (key, value){
+    filters.forEach(function (key, value) {
       carsUrl = carsUrl.concat(`${value}=${key}&`);
     });
     return carsUrl;
@@ -33,12 +36,28 @@ export class CarService {
     carsUrl = this.createParams(carsUrl, filters);
     let options = new RequestOptions({ headers: headers });
     return this.http.get(carsUrl, options)
-               .toPromise()
-               .then(
-                 response => response.json().data
-               )
-               .catch(this.handleError);
+      .toPromise()
+      .then(
+      response => response.json().data
+      )
+      .catch(this.handleError);
   }
+
+  //Get Number of Pages
+  getPages(pages: number): Promise<Page> {
+    let carsUrl = this.carsUrl.concat('/cars');
+    let headers = new Headers();
+    let params = new URLSearchParams();
+    this.createAuthorizationHeader(headers);
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(carsUrl, options)
+      .toPromise()
+      .then(
+      response => response.json().pages
+      )
+      .catch(this.handleError);
+  }
+
 
   getCar(id: number): Promise<Car> {
     let carsUrl = this.carsUrl.concat('/cars/' + id);
@@ -47,11 +66,11 @@ export class CarService {
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({ headers: headers });
     return this.http.get(carsUrl, options)
-               .toPromise()
-               .then(
-                 response => response.json().data as Car
-               )
-               .catch(this.handleError);
+      .toPromise()
+      .then(
+      response => response.json().data as Car
+      )
+      .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

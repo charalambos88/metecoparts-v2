@@ -5,7 +5,7 @@ import { Title } from "@angular/platform-browser";
 
 import { CarService } from '../../../services/car.service';
 import { Car } from '../../../models/car';
-
+import { Page } from '../../../models/pages';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -16,9 +16,11 @@ import 'rxjs/add/operator/map';
 export class CarsIndexComponent implements OnInit {
 	public loading = false;
 	cars: Car[];
+	pages: Page;
 	make:string;
 	model: string;
-
+	page: number;
+	pageNo = 2;
 	private filters = new Map;
 
 	constructor(
@@ -35,6 +37,12 @@ export class CarsIndexComponent implements OnInit {
 		this.carService
 		.getCars(filters)
 		.then(response => this.cars = response);		
+	}
+
+	getPages(pages:number): void {
+		this.carService
+		.getPages(pages)
+		.then(response => this.pages = response);		
 	}
 
 	refreshCars(event): void {		
@@ -62,7 +70,9 @@ export class CarsIndexComponent implements OnInit {
 				}
 			}
 		})
-		this.getCars(this.filters)		
+		this.getCars(this.filters);	
+		this.getPages(this.page);	
+		
 		
 	}
 
