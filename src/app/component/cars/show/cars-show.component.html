@@ -79,17 +79,21 @@
 								<h4><b> Επιπλέον εξοπλισμός</b></h4>
 								<div class="features-section">										
 									<div class="row">
-										<div class="col-xs-12">
-											<ul class="custom-list type-5">
-												<li *ngIf="car.extra_ac">Air Condition</li>
-												<li *ngIf="car.extra_sun_roof">Ηλιοροφή</li>
-												<li *ngIf="car.extra_windows">Ηλεκτρικά παράθυρα</li>
-												<li *ngIf="car.extra_navigation">Navigation</li>
-												<li *ngIf="car.extra_kotsadoros">Κοτσαδόρος</li>
-												<li *ngIf="car.extra_mirrors">Ηλεκτρικοί καθρέφτες</li>
-												<li *ngIf="car.extra_leather_seats">Δερμάτινα καθίσματα</li>
+										<div class="col-xs-6">
+											<ul class="custom-list">
+												<li [style.color]="car.extra_ac ? '#6d6f73' : '#999a9d'"><span [ngClass]="{'licon-check licon-green':car.extra_ac, 'licon-minus licon-red':!car.extra_ac}"></span>Air Condition</li>
+												<li [style.color]="car.extra_sun_roof ? '#6d6f73' : '#999a9d'"><span [ngClass]="{'licon-check licon-green':car.extra_sun_roof, 'licon-minus licon-red':!car.extra_sun_roof}"></span>Ηλιοροφή</li>
+												<li [style.color]="car.extra_windows ? '#6d6f73' : '#999a9d'"><span [ngClass]="{'licon-check licon-green':car.extra_windows, 'licon-minus licon-red':!car.extra_windows}"></span>Ηλεκτρικά παράθυρα</li>
+												<li [style.color]="car.extra_navigation ? '#6d6f73' : '#999a9d'"><span [ngClass]="{'licon-check licon-green':car.extra_navigation, 'licon-minus licon-red':!car.extra_navigation}"></span>Navigation</li>
 											</ul>												
 										</div>
+										<div class="col-xs-6">
+										<ul class="custom-list">
+											<li [style.color]="car.extra_kotsadoros ? '#6d6f73' : '#999a9d'"><span [ngClass]="{'licon-check licon-green':car.extra_kotsadoros, 'licon-minus licon-red':!car.extra_kotsadoros}"></span>Κοτσαδόρος</li>
+											<li [style.color]="car.extra_mirrors ? '#6d6f73' : '#999a9d'"><span [ngClass]="{'licon-check licon-green':car.extra_mirrors, 'licon-minus licon-red':!car.extra_mirrors}"></span>Ηλεκτρικοί καθρέφτες</li>
+											<li [style.color]="car.extra_leather_seats ? '#6d6f73' : '#999a9d'"><span [ngClass]="{'licon-check licon-green':car.extra_leather_seats, 'licon-minus licon-red':!car.extra_leather_seats}"></span>Δερμάτινα καθίσματα</li>
+										</ul>												
+									</div>
 									</div>
 								</div>										
 							</div>									

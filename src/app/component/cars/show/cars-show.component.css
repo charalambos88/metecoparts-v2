@@ -3,3 +3,19 @@
 }
 
 .carousel-tabs {height: 500px}
+.licon-green::before {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	color: #129642;
+	font-size: 12px;
+	font-weight: 600;
+	}
+.licon-red::before {
+display: inline-block;
+vertical-align: middle;
+margin-right: 10px;
+color: #ed1c24;
+font-size: 12px;
+font-weight: 600;
+}

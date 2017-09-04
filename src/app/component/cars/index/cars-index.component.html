@@ -48,10 +48,10 @@
 						<div class="settings-view-products">
 							<div class="sort-criteria">
 								<div class="view-type">
-									<a title="grid View" style="cursor: pointer;" [class.active]="!activeList" (click)="onclickGrid()">
+									<a title="grid View" style="cursor: pointer;" [class.active]="!activeList" (click)="toggleView()">
 									<i class="licon-icons"></i>
 								</a>
-									<a title="list View" style="cursor: pointer;" [class.active]="activeList" (click)="onclickList()">
+									<a title="list View" style="cursor: pointer;" [class.active]="activeList" (click)="!toggleView()">
 								<i class="licon-menu2"></i>
 							</a>
 								</div>
@@ -87,36 +87,39 @@
 										{{ car.make }} {{ car.model }}, {{ car.year }}, {{ car.cubism }} <span class="contact-title">cc</span>
 									</a>
 											</h2>
-											<p>{{ car.version }}<br>{{ car.engine_bundle }}</p>
-											<div class="content-element8">
-												<ul class="car-detail-list">
-													<li class="flex-row flex-justify">
-														<div class="detail-col">
-															<span>Αμάξωμα</span><span>{{ car.trim }}</span>
-														</div>
-													</li>
-													<li class="flex-row flex-justify">
-														<div class="detail-col">
-															<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
-														</div>
-													</li>
-													<li class="flex-row flex-justify">
-														<div class="detail-col">
-															<span>Χρώμα</span><span>{{ car.car_color }}</span>
-														</div>
-													</li>
-													<li class="flex-row flex-justify">
-														<div class="detail-col">
-															<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
-														</div>
-													</li>
-													<li class="flex-row flex-justify">
-														<div class="detail-col">
-															<span>Καύσιμο</span><span>{{ car.fuel }}</span>
-														</div>
-													</li>
-												</ul>
-											</div>
+											<p>
+												{{ car.version | slice:0:43 }} <span *ngIf="car.version?.length > 42">...</span><br> 
+												{{ car.engine_bundle | slice:0:43 }} <span *ngIf="car.engine_bundle?.length > 42">...</span>
+											</p>
+												<div class="content-element8">
+													<ul class="car-detail-list">
+														<li class="flex-row flex-justify">
+															<div class="detail-col">
+																<span>Αμάξωμα</span><span>{{ car.trim }}</span>
+															</div>
+														</li>
+														<li class="flex-row flex-justify">
+															<div class="detail-col">
+																<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
+															</div>
+														</li>
+														<li class="flex-row flex-justify">
+															<div class="detail-col">
+																<span>Χρώμα</span><span>{{ car.car_color }}</span>
+															</div>
+														</li>
+														<li class="flex-row flex-justify">
+															<div class="detail-col">
+																<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
+															</div>
+														</li>
+														<li class="flex-row flex-justify">
+															<div class="detail-col">
+																<span>Καύσιμο</span><span>{{ car.fuel }}</span>
+															</div>
+														</li>
+													</ul>
+												</div>
 										</div>
 										<div class="col-xs-4">
 											<div class="dealer-item">
