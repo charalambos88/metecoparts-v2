@@ -1,152 +1,133 @@
 <!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->		
-		<div id="content">			
-			<div class="breadcrumbs-wrap" data-bg="../assets/img/meteco-about-cover.jpg">				
-				<div class="container">					
-					<h1 class="page-title">Συχνές Ερωτήσεις
-					</h1>					
-					<ul class="breadcrumbs">						
-						<li><a href="index.html">Αρχική</a></li>
-						<li>Συχνές Ερωτήσεις</li>						
-					</ul>					
-				</div>				
-			</div>
-			
-			<!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
-			
-			<div class="page-section">				
-				<div class="container">			
-					<div class="row">
-						<div class="col-md-9">
-							<h3> Τρόποι παραγγελίας</h3>
-							<div class="accordion toggle">								
-								<div class="accordion-item">
-									<h6 class="a-title active">Μέσω τηλεφώνου</h6>
-									<div class="a-content">
-										<div class="wrapper">
-											<p>Κάλεσε μας και ενημερώσου για τη διαθεσιμότητα, την κατάσταση και την τιμή των ανταλλακτικών που σε ενδιαφέρουν.</p>
-											<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-										</div>
-									</div>
-								</div>								
-								<div class="accordion-item">
-									<h6 class="a-title"> Με επίσκεψη στις εγκαταστάσεις μας</h6>
-									<div class="a-content">
-										<p>Έλα στις εγκαταστάσεις μας, έλεγξε επιτόπου τα ανταλλακτικά που σε ενδιαφέρουν και αγόρασε τα.</p>
-										<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-									</div>
-								</div>								
-							</div>
+<div id="content">			
+	<div class="breadcrumbs-wrap" style="background-image: url('../assets/img/meteco-about-cover.jpg');">				
+		<div class="container">					
+			<h1 class="page-title">Συχνές Ερωτήσεις
+			</h1>					
+			<ul class="breadcrumbs">						
+				<li><a routerLink="/">Αρχική</a></li>
+				<li>Συχνές Ερωτήσεις</li>						
+			</ul>					
+		</div>				
+	</div>
+
+	<!-- - - - - - - - - - - - - end Breadcrumbs - - - - - - - - - - - - - - - -->
+	<div class="page-section">				
+		<div class="container">			
+			<div class="row">
+				<div class="col-md-9">
+					<h3> Τρόποι παραγγελίας</h3>
+					<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+						<ngb-panel title="Μέσω τηλεφώνου">
+							<ng-template ngbPanelContent>
+								Κάλεσε μας και ενημερώσου για τη διαθεσιμότητα, την κατάσταση και την τιμή των ανταλλακτικών που σε ενδιαφέρουν.
+								<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+							</ng-template>
+						</ngb-panel>
+						<ngb-panel title="Με επίσκεψη στις εγκαταστάσεις μας">
+							<ng-template ngbPanelContent>
+								Έλα στις εγκαταστάσεις μας, έλεγξε επιτόπου τα ανταλλακτικά που σε ενδιαφέρουν και αγόρασε τα.
+								<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+							</ng-template>
+						</ngb-panel>
+					</ngb-accordion>
+					<br>
+					<h3>Τρόποι πληρωμής</h3>
+					<ngb-accordion #acc="ngbAccordion">
+						<ngb-panel title="Αντικαταβολή">
+							<ng-template ngbPanelContent>
+								Πληρώνεις την ώρα που παραλαμβάνεις το ανταλλακτικό.
+								<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+							</ng-template>
+						</ngb-panel>
+						<ngb-panel title="Κατάθεση σε τραπεζικό λογαριασμό">
+							<ng-template ngbPanelContent>
+								<p>Καταθέτεις τα χρήματα σε τραπεζικό μας λογαριασμό. Mας ενημερώνεις για την κατάθεση τηλεφωνικά στο 2310781295, μέσω fax στο 2310785421 ή μέσω email στο parts@metecogroup.com. Μετά εμείς προχωρούμε στην αποστολή των ανταλλακτικών.</p>
+								<table class="table table-bordered table-striped">
+									<colgroup>
+									<col class="col-xs-4">
+									<col class="col-xs-4">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>Τράπεζα </th>
+										<th>IBAN</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td> Alpha Bank </td>
+										<td>GR58 0140 4870 4870 0233 0000 220</td>
+									</tr>
+									<tr>
+										<td> Τράπεζα Πειραιώς </td>
+										<td>GR33 0172 2650 0052 6506 2900 263</td>
+									</tr>
+									<tr>
+										<td> Εθνική Τράπεζα </td>
+										<td>GR46 0110 7410 0000 7414 4012 122</td>
+									</tr>
+									<tr>
+										<td> Eurobank </td>
+										<td>GR73 0260 1910 0000 5020 0376 073</td>
+									</tr>
+								</tbody>
+							</table>
 							<br>
-							<h3>Τρόποι πληρωμής</h3>
-							<div class="accordion toggle">								
-								<div class="accordion-item">
-									<h6 class="a-title"> Αντικαταβολή</h6>
-									<div class="a-content">
-										<div class="wrapper">
-											<p>Πληρώνεις την ώρα που παραλαμβάνεις το ανταλλακτικό.</p>
-											<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-										</div>
-									</div>
-								</div>								
-								<div class="accordion-item">
-									<h6 class="a-title">Κατάθεση σε τραπεζικό λογαριασμό</h6>
-									<div class="a-content">
-										<p>Καταθέτεις τα χρήματα σε τραπεζικό μας λογαριασμό. Mας ενημερώνεις για την κατάθεση τηλεφωνικά στο 2310781295, μέσω fax στο 2310785421 ή μέσω email στο parts@metecogroup.com. Μετά εμείς προχωρούμε στην αποστολή των ανταλλακτικών.</p>
-										<table class="table table-bordered table-striped">
-											<colgroup>
-												<col class="col-xs-4">
-												<col class="col-xs-4">
-											</colgroup>
-											<thead>
-												<tr>
-													<th>Τράπεζα </th>
-													<th>IBAN</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td> Alpha Bank </td>
-													<td>GR58 0140 4870 4870 0233 0000 220</td>
-												</tr>
-												<tr>
-													<td> Τράπεζα Πειραιώς </td>
-													<td>GR33 0172 2650 0052 6506 2900 263</td>
-												</tr>
-												<tr>
-													<td> Εθνική Τράπεζα </td>
-													<td>GR46 0110 7410 0000 7414 4012 122</td>
-												</tr>
-												<tr>
-													<td> Eurobank </td>
-													<td>GR73 0260 1910 0000 5020 0376 073</td>
-												</tr>
-											</tbody>
-										</table>
-										<p>Πριν προχωρήσεις στην κατάθεση, μίλησε μαζί μας στο 2310781295.</p>
-										<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-									</div>
-								</div>								
-								<div class="accordion-item">
-									<h6 class="a-title">  Πιστωτική / Χρεωστική κάρτα</h6>
-									<div class="a-content">
-										<div class="wrapper">
-											<p>Με την τηλεφωνική χρέωση της πιστωτικής σου κάρτας.</p>
-											<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<br>
-							<h3>Τρόποι αποστολής</h3>
-							<div class="accordion toggle">								
-								<div class="accordion-item">
-									<h6 class="a-title">Για το Νομό Θεσσαλονίκης</h6>
-									<div class="a-content">
-										<div class="wrapper">
-											<p>Μετά από τηλεφωνική συνεννόηση, τα ανταλλακτικά μεταφέρονται με δικά μας μέσα ή από κάποια συνεργαζόμενη εταιρεία courier.</p>
-											<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-										</div>
-									</div>
-								</div>								
-								<div class="accordion-item">
-									<h6 class="a-title"> Για την Υπόλοιπη Ελλάδα</h6>
-									<div class="a-content">
-										<p>Η αποστολή των ανταλλακτικών στην υπόλοπη Ελλάδα πραγματοποιείται μέσω κούριερ, μεταφορικής ή ΚΤΕΛ. Ενημερώνεσαι για το κόστος αποστολής πριν την αποστολή των ανταλλακτικών, καθώς το επιβαρύνεσαι εσύ.</p>
-										<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-									</div>
-								</div>									
-								<div class="accordion-item">
-									<h6 class="a-title"> Για το εξωτερικό</h6>
-									<div class="a-content">
-										<p>Οι αποστολές στο εξωτερικό γίνονται με ταχυδρομείο και διαφέρουν ανάλογα με τη χώρα αποστολής.</p>
-										<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-									</div>
-								</div>
-								<div class="accordion-item">
-									<h6 class="a-title"> Σε πόσες μέρες θα παραλάβω τα ανταλλακτικά;</h6>
-									<div class="a-content">
-										<p>Ο χρόνος παράδοσης κυμαίνεται από 1 έως 4 εργάσιμες ημέρες ανάλογα με τον τρόπο και τόπο αποστολής και το χρόνο που απαιτείται για την αφαίρεση του ανταλλακτικού από το αυτοκίνητο. Η ομάδα μας επιλέγει τον καλύτερο τρόπο για να παραλάβεις τα ανταλλακτικά σύντομα και με χαμηλό κόστος.</p>
-										<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-									</div>
-								</div>
-							</div>
-							<br>
-							<h3> Επιστροφές Προϊόντων</h3>
-							<div class="accordion toggle">								
-								<div class="accordion-item">
-									<h6 class="a-title"> Δέχεστε επιστροφές προϊόντων;</h6>
-									<div class="a-content">
-										<div class="wrapper">
-											<p>Το Τμήμα Εξυπηρέτησης Πελατών θα σε ενημερώσει πριν αγοράσεις τα ανταλλακτικά για την πολιτική επιστροφών μας. Η Πολιτική Επιστροφών διαφέρει ανάλογα με το είδος των εμπορευμάτων.</p>
-											<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
-										</div>
-									</div>
-								</div>								
-							</div>
-						</div>						
-					</div>
-					
-				</div>				
-			</div>
+							<p>Πριν προχωρήσεις στην κατάθεση, μίλησε μαζί μας στο 2310781295.</p>
+							<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+						</ng-template>
+					</ngb-panel>
+					<ngb-panel title="Πιστωτική / Χρεωστική κάρτα">
+						<ng-template ngbPanelContent>
+							Με την τηλεφωνική χρέωση της πιστωτικής σου κάρτας.
+							<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+						</ng-template>
+					</ngb-panel>
+				</ngb-accordion>
+				<br>
+				<h3>Τρόποι αποστολής</h3>
+				<ngb-accordion #acc="ngbAccordion">
+					<ngb-panel title="Για το Νομό Θεσσαλονίκης">
+						<ng-template ngbPanelContent>
+							Μετά από τηλεφωνική συνεννόηση, τα ανταλλακτικά μεταφέρονται με δικά μας μέσα ή από κάποια συνεργαζόμενη εταιρεία courier.
+							<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+						</ng-template>
+					</ngb-panel>
+					<ngb-panel title="Για την Υπόλοιπη Ελλάδα">
+						<ng-template ngbPanelContent>							 
+							<p>Η αποστολή των ανταλλακτικών στην υπόλοπη Ελλάδα πραγματοποιείται μέσω κούριερ, μεταφορικής ή ΚΤΕΛ.</p>
+							<p>Ενημερώνεσαι για το κόστος αποστολής πριν την αποστολή των ανταλλακτικών, καθώς το επιβαρύνεσαι εσύ.</p>
+							<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+						</ng-template>
+					</ngb-panel>
+					<ngb-panel title="Για το εξωτερικό">
+						<ng-template ngbPanelContent>
+							Οι αποστολές στο εξωτερικό γίνονται με ταχυδρομείο και διαφέρουν ανάλογα με τη χώρα αποστολής.
+							<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+						</ng-template>
+					</ngb-panel>
+					<ngb-panel title="	 Σε πόσες μέρες θα παραλάβω τα ανταλλακτικά;">
+						<ng-template ngbPanelContent>
+							Ο χρόνος παράδοσης κυμαίνεται από 1 έως 4 εργάσιμες ημέρες ανάλογα με τον τρόπο και τόπο αποστολής και το χρόνο που απαιτείται για την αφαίρεση του ανταλλακτικού από το αυτοκίνητο. Η ομάδα μας επιλέγει τον καλύτερο τρόπο για να παραλάβεις τα ανταλλακτικά σύντομα και με χαμηλό κόστος.
+							<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+						</ng-template>
+					</ngb-panel>
+				</ngb-accordion>
+				<br>
+				<h3> Επιστροφές Προϊόντων</h3>
+				<ngb-accordion #acc="ngbAccordion">
+					<ngb-panel title="Δέχεστε επιστροφές προϊόντων;">
+						<ng-template ngbPanelContent>
+							Το Τμήμα Εξυπηρέτησης Πελατών θα σε ενημερώσει πριν αγοράσεις τα ανταλλακτικά για την πολιτική επιστροφών μας. Η Πολιτική Επιστροφών διαφέρει ανάλογα με το είδος των εμπορευμάτων.
+							<span class="text-size-small text-muted">Τελευταία ενημέρωση: 08/05/2017</span>
+						</ng-template>
+					</ngb-panel>
+				</ngb-accordion>
+			</div>						
 		</div>
+
+	</div>				
+</div>
+</div>
 		<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->

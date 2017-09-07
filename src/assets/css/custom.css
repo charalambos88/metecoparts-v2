@@ -1,6 +1,8 @@
 h1, h2, h3, h4, h5, h6, .our-info-list > li {font-family: 'Roboto', sans-serif;}
 #main-navigation > ul > li, .sub-menu-wrap ul li a {font-family: 'Roboto', sans-serif;}
 #main-navigation > ul > li > a, .sub-menu-wrap ul li a {font-weight: 500}
+i.licon-heart.footer-copy{color:#ed1c24}
+.our-services .service-item > i {color: #ed1c24;font-size: 40px;margin-bottom: 30px;display: block;}
 
 .our-info-list > li div > p {font-weight:400}
 .our-info-list > li a, .our-info-list > li div > span {font-weight:700;font-family: 'Roboto', sans-serif;}
@@ -19,5 +21,10 @@ h3.section-title {text-transform: uppercase; font-weight: 500;margin-bottom: 40p
 .pr-5{padding-right: 5px;}
 
 /* car list page  & single car*/
+.car-detail-list .detail-col span:first-child {text-transform:none}
+.pricing-area > * {display: block;}
+.product-description {padding: 15px;}
+.product-description .product-name:not(:last-child) {margin-bottom: 10px;}
+.product-description .content-element8 .car-detail-list .detail-col {padding-bottom:0px;}
 .dealers-section.product-type h1, .single-product-title h1 {font-size:26px}
 h2.product-name {font-size: 18px;font-weight: normal;}

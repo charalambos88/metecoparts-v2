@@ -1,3 +1,468 @@
-<p>
-  filters works!
-</p>
+<div class="filter-section">	
+		
+	<div class="accordion toggle" *ngIf="!selectedMake">
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Κατασκευαστές</h6>
+			<div class="a-content">
+				<div class="input-wrapper" *ngFor="let make of makes">
+					<input type="checkbox" 
+					name="checkbox-{{ make.id }}" 
+					id="checkbox-{{ make.id }}"
+					(click)="refreshCars('make',make.id); selectMake(make);"
+					>
+					<label for="checkbox-{{ make.id }}">{{ make.name }}</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion toggle" *ngIf="selectedMake && !selectedModel && !selectedVersion && !selectedFacelift">
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Μοντελο</h6>
+			<div class="a-content">
+				<div class="input-wrapper">
+					<input type="checkbox" 
+					name="checkbox-{{make.id}}" 
+					id="checkbox-{{make.id}}" 
+					(click)="refreshCars('make',null); selectMake(null);">
+					<label for="checkbox-{{make.id}}">{{ selectedMake.name }}</label>
+				</div>
+				<div class="input-wrapper" *ngFor="let model of selectedMake.models">
+					<input type="checkbox" 
+					name="checkbox-{{model.id}}" 
+					id="checkbox-{{model.id}}" 
+					(click)="refreshCars('model',model.id); selectModel(model);">
+					<label for="checkbox-{{model.id}}">{{ model.name }}</label>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="accordion toggle no-of">
+
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Price</h6>
+			<div class="a-content">
+
+				<!--price-->
+				<fieldset class="price-scale">
+					<div class="clearfix range-values">
+						<input class="f-left first-limit" readonly type="text" value="$1,000">
+						<input class="f-right last-limit" readonly type="text" value="$99,000">
+					</div>
+					<div id="price"></div>
+				</fieldset>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="accordion toggle no-of">
+
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Mileage</h6>
+			<div class="a-content">
+
+				<form>
+
+					<div class="custom-select">
+						<div class="select-title">Any</div>
+						<ul id="menu-type3" class="select-list"></ul>
+						<select class="hide">
+							<option value="menu">Option 1</option>
+							<option value="menu">Option 2</option>
+							<option value="menu">Option 3</option>
+						</select>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="accordion toggle">
+
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Body Style</h6>
+			<div class="a-content">
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-35" id="checkbox-35" checked="">
+					<label for="checkbox-35">Any</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-36" id="checkbox-36">
+					<label for="checkbox-36">Cargo Van </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-37" id="checkbox-37">
+					<label for="checkbox-37">Convertible </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-38" id="checkbox-38">
+					<label for="checkbox-38">Coupe </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-39" id="checkbox-39">
+					<label for="checkbox-39">Crew Cab Pickup</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-30" id="checkbox-40">
+					<label for="checkbox-40">Extended Cab Pickup</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-41" id="checkbox-41">
+					<label for="checkbox-41">Hatchback </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-42" id="checkbox-42">
+					<label for="checkbox-42">Minivan</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-43" id="checkbox-43">
+					<label for="checkbox-43">Sedan</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-44" id="checkbox-44">
+					<label for="checkbox-44">Crossover</label>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="accordion toggle">
+
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Drivetrain</h6>
+			<div class="a-content">
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-45" id="checkbox-45" checked="">
+					<label for="checkbox-45">Any</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-46" id="checkbox-46">
+					<label for="checkbox-46">4x2/2-wheel drive </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-47" id="checkbox-47">
+					<label for="checkbox-47">4x4/4-wheel drive</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-48" id="checkbox-48">
+					<label for="checkbox-48">AWD</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-49" id="checkbox-49">
+					<label for="checkbox-49">FWD</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-50" id="checkbox-50">
+					<label for="checkbox-50">RWD</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-51" id="checkbox-51">
+					<label for="checkbox-51">Unknown</label>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="accordion toggle">
+
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Transmission</h6>
+			<div class="a-content">
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-52" id="checkbox-52" checked="">
+					<label for="checkbox-52">Any</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-53" id="checkbox-53">
+					<label for="checkbox-53">Manual</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-54" id="checkbox-54">
+					<label for="checkbox-54">Automatic</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-55" id="checkbox-55">
+					<label for="checkbox-55">Automanual</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-56" id="checkbox-56">
+					<label for="checkbox-56">CVT</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-57" id="checkbox-57">
+					<label for="checkbox-57">Other / Unknown</label>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="accordion toggle">
+
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Exterior Color</h6>
+			<div class="a-content">
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-58" id="checkbox-58" checked="">
+					<label for="checkbox-58">Any</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-59" id="checkbox-59">
+					<label for="checkbox-59">Beige</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-60" id="checkbox-60">
+					<label for="checkbox-60">Black</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-61" id="checkbox-61">
+					<label for="checkbox-61">Blue</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-62" id="checkbox-62">
+					<label for="checkbox-62">Brown </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-63" id="checkbox-63">
+					<label for="checkbox-63">Gold </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-64" id="checkbox-64">
+					<label for="checkbox-64">Gray </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-65" id="checkbox-65">
+					<label for="checkbox-65">Green </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-66" id="checkbox-66">
+					<label for="checkbox-66">Red </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-67" id="checkbox-67">
+					<label for="checkbox-67">Yellow </label>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="accordion toggle">
+
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Interior Color</h6>
+			<div class="a-content">
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-68" id="checkbox-68" checked="">
+					<label for="checkbox-68">Any</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-69" id="checkbox-69">
+					<label for="checkbox-69">Beige</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-70" id="checkbox-70">
+					<label for="checkbox-70">Black</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-71" id="checkbox-71">
+					<label for="checkbox-71">Blue</label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-72" id="checkbox-72">
+					<label for="checkbox-72">Brown </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-73" id="checkbox-73">
+					<label for="checkbox-73">Gold </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-74" id="checkbox-74">
+					<label for="checkbox-74">Gray </label>
+
+				</div>
+
+				<div class="input-wrapper">
+
+					<input type="checkbox" name="checkbox-75" id="checkbox-75">
+					<label for="checkbox-75">Green </label>
+
+				</div>
+
+				<div class="input-wrapper">
+					<input type="checkbox" name="checkbox-76" id="checkbox-76">
+					<label for="checkbox-76">Red </label>
+
+				</div>
+				<div class="input-wrapper">
+					<input type="checkbox" name="checkbox-77" id="checkbox-77">
+					<label for="checkbox-77">Yellow </label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion toggle">
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Photos</h6>
+			<div class="a-content">
+				<div class="input-wrapper">
+					<input type="radio" name="radio-1" id="radio-1">
+					<label for="radio-1">Only show cars with photos</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion toggle">
+		<!--accordion item-->           
+		<div class="accordion-item">
+			<h6 class="a-title active">Keywords</h6>
+			<div class="a-content">
+				<form>
+					<input type="text" placeholder="Additional keywords">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

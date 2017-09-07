@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-faqs',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqsComponent implements OnInit {
 
-  constructor() { }
+  constructor(title: Title) {
+  	title.setTitle("Συχνές ερωτήσεις - Μεταχειρισμένα ανταλλακτικά αυτοκινήτων - Meteco AE");
+  }
 
   ngOnInit() {
   }

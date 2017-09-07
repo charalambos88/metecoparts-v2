@@ -1,7 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { routes } from './app.router';
+import { LoadingModule } from 'ngx-loading';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/commons/header/header.component';
@@ -17,27 +20,44 @@ import { SidebarComponent } from './component/cars/show/sidebar/sidebar.componen
 import { FiltersComponent } from './component/cars/index/filters/filters.component';
 import { TermsComponent } from './component/pages/terms/terms.component';
 
+import { CarService } from './services/car.service';
+import { MakeService } from './services/make.service';
+import { MessageService } from './services/message.service';
+
+import { ReplaceSpacePipe } from './replace-space.pipe';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    AboutComponent,
-    ContactComponent,
-    FaqsComponent,
-    IndexComponent,
-    CarsIndexComponent,
-    Notfound404Component,
-    CarsShowComponent,
-    SidebarComponent,
-    FiltersComponent,
-    TermsComponent
+  AppComponent,
+  HeaderComponent,
+  FooterComponent,
+  AboutComponent,
+  ContactComponent,
+  FaqsComponent,
+  IndexComponent,
+  CarsIndexComponent,
+  Notfound404Component,
+  CarsShowComponent,
+  SidebarComponent,
+  FiltersComponent,
+  TermsComponent,
+  ReplaceSpacePipe
   ],
   imports: [
-    BrowserModule,
-    routes
+  BrowserModule,
+  FormsModule,
+  ReactiveFormsModule,
+  HttpModule,
+  NgbModule.forRoot(),
+  LoadingModule,
+  routes
   ],
-  providers: [],
+  providers: [
+  Title,
+  CarService,
+  MakeService,
+  MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
