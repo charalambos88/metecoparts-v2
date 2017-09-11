@@ -9,11 +9,19 @@
 			</aside>
 
 			<main id="main" class="col-md-9 col-sm-12">
-				<div class="dealers-section product-type">
+				<!-- animation -->
+				<div class="scene" *ngIf="!cars">
+						<img class="car" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/car.svg" alt="" />
+						<img class="poof" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/poof.svg" alt="" />
+						<img class="sign" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/sign.svg" alt="" />
+				</div>
+				<!--/ animation -->
+
+				<div class="dealers-section product-type" *ngIf="cars">					
 					<h1 class="section-title tt-uppercase">Μεταχειρισμένα ανταλλακτικά για <span class="fw-medium">Opel Corsa B1, 1992-1998</span></h1>
 					<div>Pages: {{pages}}</div>
-					<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 					<!-- dealer sorting -->
+					
 					<div class="flex-row flex-justify">
 						<div class="sort-dealer">
 							<div class="sort-col">
@@ -88,38 +96,38 @@
 									</a>
 											</h2>
 											<p>
-												{{ car.version | slice:0:43 }} <span *ngIf="car.version?.length > 42">...</span><br> 
-												{{ car.engine_bundle | slice:0:43 }} <span *ngIf="car.engine_bundle?.length > 42">...</span>
+												{{ car.version | slice:0:43 }} <span *ngIf="car.version?.length > 42">...</span><br> {{ car.engine_bundle | slice:0:43
+												}} <span *ngIf="car.engine_bundle?.length > 42">...</span>
 											</p>
-												<div class="content-element8">
-													<ul class="car-detail-list">
-														<li class="flex-row flex-justify">
-															<div class="detail-col">
-																<span>Αμάξωμα</span><span>{{ car.trim }}</span>
-															</div>
-														</li>
-														<li class="flex-row flex-justify">
-															<div class="detail-col">
-																<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
-															</div>
-														</li>
-														<li class="flex-row flex-justify">
-															<div class="detail-col">
-																<span>Χρώμα</span><span>{{ car.car_color }}</span>
-															</div>
-														</li>
-														<li class="flex-row flex-justify">
-															<div class="detail-col">
-																<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
-															</div>
-														</li>
-														<li class="flex-row flex-justify">
-															<div class="detail-col">
-																<span>Καύσιμο</span><span>{{ car.fuel }}</span>
-															</div>
-														</li>
-													</ul>
-												</div>
+											<div class="content-element8">
+												<ul class="car-detail-list">
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Αμάξωμα</span><span>{{ car.trim }}</span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Κυβισμός</span><span>{{ car.cubism }} <span class="contact-title">cc</span></span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Χρώμα</span><span>{{ car.car_color }}</span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Κινητήρας</span><span>{{ car.engine_number }}</span>
+														</div>
+													</li>
+													<li class="flex-row flex-justify">
+														<div class="detail-col">
+															<span>Καύσιμο</span><span>{{ car.fuel }}</span>
+														</div>
+													</li>
+												</ul>
+											</div>
 										</div>
 										<div class="col-xs-4">
 											<div class="dealer-item">
@@ -143,7 +151,7 @@
 						</div>
 					</div>
 				</div>
-				<ul class="pagination">
+				<ul class="pagination" *ngIf="cars">
 					<li><a href="#" class="prev-page"></a></li>
 					<li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>

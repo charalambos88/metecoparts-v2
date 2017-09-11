@@ -14,7 +14,6 @@ import 'rxjs/add/operator/map';
 	styleUrls: ['./cars-index.component.css']
 })
 export class CarsIndexComponent implements OnInit {
-	public loading = false;
 	cars: Car[];
 	pages: Page;
 	make: string;
@@ -37,9 +36,11 @@ export class CarsIndexComponent implements OnInit {
 	}
 
 	getCars(filters: Map<string, any>): void {
+		
 		this.carService
 			.getCars(filters)
-			.then(response => this.cars = response);
+			.then(response => this.cars = response)
+			
 	}
 
 	getPages(pages: number): void {
@@ -65,15 +66,17 @@ export class CarsIndexComponent implements OnInit {
 	ngOnInit(): void {
 		this.route.queryParams.subscribe((params: Params) => {
 			for (var key in params) {
-				if (params.hasOwnProperty(key)) {
+				if (params.hasOwnProperty(key)) {					
 					if (params[key]) {
 						this.filters.set(key, params[key]);
+						
 					}
 				}
 			}
 		})
 		this.getCars(this.filters);
 		this.getPages(this.page);
+		
 	}
 
 	toggleView() {
