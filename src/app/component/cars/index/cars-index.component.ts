@@ -1,3 +1,4 @@
+import { FiltersComponent } from './filters/filters.component';
 import { Component, OnInit } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -19,7 +20,7 @@ export class CarsIndexComponent implements OnInit {
 	make: string;
 	model: string;
 	page: number;
-	pageNo = 2;
+	pageNo = 1;
 	private filters = new Map;
 
 	//dom manipulation
@@ -35,10 +36,10 @@ export class CarsIndexComponent implements OnInit {
 		title.setTitle("Αναζήτηση για μεταχειρισμένα ανταλλακτικά αυτοκινήτων - Meteco AE");
 	}
 
-	getCars(filters: Map<string, any>): void {
+	getCars(page:number, filters: Map<string, any>): void {
 		
 		this.carService
-			.getCars(filters)
+			.getCars(page, filters)
 			.then(response => this.cars = response)
 			
 	}
@@ -60,7 +61,7 @@ export class CarsIndexComponent implements OnInit {
 				}
 			}
 		}
-		this.getCars(this.filters);
+		this.getCars(this.pageNo, this.filters);
 	}
 
 	ngOnInit(): void {
@@ -74,7 +75,7 @@ export class CarsIndexComponent implements OnInit {
 				}
 			}
 		})
-		this.getCars(this.filters);
+		this.getCars(this.pageNo, this.filters);
 		this.getPages(this.page);
 		
 	}
@@ -83,4 +84,11 @@ export class CarsIndexComponent implements OnInit {
 		this.isList = !this.isList;
 		this.activeList = !this.activeList
 	}
+
+	infinityLoadPage(){
+		// this.pageNo++;
+		// this.refreshCars(this.pageNo);
+		console.log('scrolled! =>' );
+	}
 }
+

@@ -18,9 +18,9 @@ export class CarService {
     headers.append('user', '1');
   }
 
-  createParams(carsUrl: string, filters: Map<string, any>): string {
+  createParams(page:number, carsUrl: string, filters: Map<string, any>): string {
     if (filters) {
-      carsUrl = carsUrl.concat('?');
+      carsUrl = carsUrl.concat(`?page=${page}&`);
     }
     filters.forEach(function (key, value) {
       carsUrl = carsUrl.concat(`${value}=${key}&`);
@@ -28,12 +28,12 @@ export class CarService {
     return carsUrl;
   }
 
-  getCars(filters: Map<string, any>): Promise<Car[]> {
+  getCars(page:number, filters: Map<string, any>): Promise<Car[]> {
     let carsUrl = this.carsUrl.concat('/cars');
     let headers = new Headers();
     let params = new URLSearchParams();
     this.createAuthorizationHeader(headers);
-    carsUrl = this.createParams(carsUrl, filters);
+    carsUrl = this.createParams(page, carsUrl, filters);
     let options = new RequestOptions({ headers: headers });
     return this.http.get(carsUrl, options)
       .toPromise()

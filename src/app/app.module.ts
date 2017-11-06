@@ -1,10 +1,14 @@
+import { ModelFilterPipe } from './model-filter.pipe';
+import { MakeFilterPipe } from './make-filter.pipe';
+import { SearchFilterPipe } from './search-filter.pipe';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { routes } from './app.router';
-import { LoadingModule } from 'ngx-loading';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/commons/header/header.component';
@@ -41,15 +45,18 @@ import { ReplaceSpacePipe } from './replace-space.pipe';
   SidebarComponent,
   FiltersComponent,
   TermsComponent,
-  ReplaceSpacePipe
+  ReplaceSpacePipe,
+  SearchFilterPipe,
+  MakeFilterPipe,
+  ModelFilterPipe
   ],
   imports: [
   BrowserModule,
   FormsModule,
   ReactiveFormsModule,
   HttpModule,
+  InfiniteScrollModule,
   NgbModule.forRoot(),
-  LoadingModule,
   routes
   ],
   providers: [

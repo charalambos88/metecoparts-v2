@@ -36,9 +36,9 @@ export class IndexComponent implements OnInit {
 		.then(makes => this.makes = makes);
 	}
 
-	getCars(filters: Map<string, any>): void {
+	getCars(page:number, filters: Map<string, any>): void {
 		this.carService
-		.getCars(filters)
+		.getCars(page, filters)
 		.then(response => this.cars = response);		
 	}
 
@@ -54,7 +54,7 @@ export class IndexComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.getMakes();
-		this.getCars(this.filters)
+		this.getCars(1, this.filters)
 	}
 
 }

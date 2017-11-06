@@ -5,7 +5,14 @@
 		<div class="accordion-item">
 			<h6 class="a-title active">Κατασκευαστές</h6>
 			<div class="a-content">
-				<div class="input-wrapper" *ngFor="let make of makes">
+				<input type="text" 
+				placeholder="αναζήτηση κατασκευαστή..." 
+				name="searchText" [(ngModel)]="makeSearch" 
+				*ngIf="makes"
+				style="background-color: #f2f3f3;">
+			</div>
+			<div class="a-content">
+				<div class="input-wrapper" *ngFor="let make of makes | makeFilterPipe: makeSearch">
 					<input type="checkbox" 
 					name="checkbox-{{ make.id }}" 
 					id="checkbox-{{ make.id }}"
@@ -21,14 +28,21 @@
 		<div class="accordion-item">
 			<h6 class="a-title active">Μοντελο</h6>
 			<div class="a-content">
-				<div class="input-wrapper">
-					<input type="checkbox" 
-					name="checkbox-{{make.id}}" 
-					id="checkbox-{{make.id}}" 
-					(click)="refreshCars('make',null); selectMake(null);">
-					<label for="checkbox-{{make.id}}">{{ selectedMake.name }}</label>
+					<input type="text" 
+					placeholder="αναζήτηση μοντέλου..." 
+					name="searchText" [(ngModel)]="modelSearch" 
+					*ngIf="makes"
+					style="background-color: #f2f3f3;">
 				</div>
-				<div class="input-wrapper" *ngFor="let model of selectedMake.models">
+			<div class="a-content">
+				<div class="input-wrapper">
+					<input type="checkbox" checked
+					name="checkbox-{{selectedMake.id}}" 
+					id="checkbox-{{selectedMake.id}}" 
+					(click)="refreshCars('make', null); selectMake(null);">
+					<label for="checkbox-{{selectedMake.id}}">{{ selectedMake.name }}</label>
+				</div>
+				<div class="input-wrapper" *ngFor="let model of selectedMake.models | modelFilterPipe: modelSearch">
 					<input type="checkbox" 
 					name="checkbox-{{model.id}}" 
 					id="checkbox-{{model.id}}" 

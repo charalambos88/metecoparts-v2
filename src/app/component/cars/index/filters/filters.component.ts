@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 
 import { CarService } from '../../../../services/car.service';
 import { MakeService } from '../../../../services/make.service';
@@ -21,7 +21,6 @@ export class FiltersComponent implements OnInit {
 
 	//@Output()
 	public onRefresh = new EventEmitter();
-
 	makes: Make[];
 	models: Model[];
 	selectedMake: Make;
@@ -76,9 +75,8 @@ export class FiltersComponent implements OnInit {
 		.then(makes => this.makes = makes);
 	}
 
-	
-
-	ngOnInit(): void {
+		ngOnInit(): void {
 		this.getMakes();
 	}
+	
 }

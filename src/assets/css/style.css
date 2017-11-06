@@ -8515,7 +8515,7 @@ button.search-button:before{content: "\e922";}
     }
  
     .car-detail-list .detail-col:only-child span:first-child{
-      width: 45%;
+      width: 35%;
     }
 
     .car-detail-list .detail-col:only-child span:last-child{
